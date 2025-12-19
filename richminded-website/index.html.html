@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Richminded Skills - Premium Forex Trading Robots</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #00ff88;
+            --secondary: #0a0a0a;
+            --accent: #ff0066;
+            --text: #ffffff;
+            --text-dim: #a0a0a0;
+            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--secondary);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at 20% 50%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(245, 87, 108, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 40% 20%, rgba(0, 255, 136, 0.05) 0%, transparent 50%);
+            animation: bgShift 15s ease infinite;
+        }
+
+        @keyframes bgShift {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        /* Header */
+        header {
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 255, 136, 0.2);
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 28px;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary), #00ccff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            margin-left: 30px;
+            font-weight: 600;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 60px 5%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            z-index: 2;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 72px;
+            font-weight: 900;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #ffffff, var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .hero p {
+            font-size: 22px;
+            color: var(--text-dim);
+            margin-bottom: 40px;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 18px 45px;
+            background: linear-gradient(135deg, var(--primary), #00ccff);
+            color: var(--secondary);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 18px;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.3);
+            animation: fadeInUp 1s ease 0.6s both, pulse 2s ease infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 255, 136, 0.5);
+        }
+
+        /* Stats Section */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            padding: 80px 5%;
+            background: rgba(0, 0, 0, 0.3);
+            border-top: 1px solid rgba(0, 255, 136, 0.2);
+            border-bottom: 1px solid rgba(0, 255, 136, 0.2);
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+        }
+
+        .stat-number {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 48px;
+            font-weight: 900;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 16px;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 100px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 48px;
+            font-weight: 900;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #ffffff, var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 20px;
+            color: var(--text-dim);
+            margin-bottom: 60px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+        }
+
+        .feature-card {
+            padding: 40px;
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary), transparent);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+        }
+
+        .feature-card:hover::before {
+            opacity: 0.1;
+        }
+
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .feature-card p {
+            color: var(--text-dim);
+            line-height: 1.8;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 100px 5%;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            padding: 50px 40px;
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+            border-radius: 25px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            transition: all 0.4s;
+            position: relative;
+        }
+
+        .pricing-card.featured {
+            border-color: var(--primary);
+            transform: scale(1.05);
+            box-shadow: 0 20px 60px rgba(0, 255, 136, 0.2);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            border-color: var(--primary);
+        }
+
+        .plan-badge {
+            position: absolute;
+            top: -15px;
+            right: 30px;
+            background: var(--primary);
+            color: var(--secondary);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 12px;
+            text-transform: uppercase;
+        }
+
+        .plan-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 28px;
+            font-weight: 900;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .plan-price {
+            font-size: 56px;
+            font-weight: 900;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+
+        .plan-price span {
+            font-size: 28px;
+            color: var(--text-dim);
+        }
+
+        .plan-term {
+            color: var(--text-dim);
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        .plan-features {
+            list-style: none;
+            margin-bottom: 40px;
+            text-align: left;
+        }
+
+        .plan-features li {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-dim);
+        }
+
+        .plan-features li::before {
+            content: '✓';
+            color: var(--primary);
+            font-weight: 900;
+            margin-right: 10px;
+        }
+
+        .plan-button {
+            display: block;
+            width: 100%;
+            padding: 18px;
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .plan-button:hover, .pricing-card.featured .plan-button {
+            background: var(--primary);
+            color: var(--secondary);
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 100px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+        }
+
+        .testimonial-text {
+            font-size: 18px;
+            font-style: italic;
+            color: var(--text-dim);
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .testimonial-author {
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 100px 5%;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+            padding: 60px;
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-container a:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.3);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: var(--text);
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, var(--primary), #00ccff);
+            color: var(--secondary);
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 255, 136, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px 5%;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            margin-bottom: 30px;
+        }
+
+        .footer-links a {
+            color: var(--text-dim);
+            text-decoration: none;
+            margin: 0 20px;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .copyright {
+            color: var(--text-dim);
+            font-size: 14px;
+        }
+
+        .risk-disclosure {
+            max-width: 900px;
+            margin: 40px auto 0;
+            padding: 30px;
+            background: rgba(255, 0, 0, 0.05);
+            border: 1px solid rgba(255, 0, 0, 0.2);
+            border-radius: 15px;
+            font-size: 13px;
+            color: var(--text-dim);
+            line-height: 1.8;
+            text-align: left;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .section-title {
+                font-size: 36px;
+            }
+
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+
+            nav a {
+                margin-left: 15px;
+                font-size: 14px;
+            }
+
+            .contact-container {
+                padding: 40px 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="animated-bg"></div>
+
+    <header>
+        <div class="logo">Richminded Skills</div>
+        <nav>
+            <a href="#features">Features</a>
+            <a href="#pricing">Robots</a>
+            <a href="#payment">Payment</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Premium Forex Trading Robots</h1>
+            <p>Experience automated trading success with our collection of powerful Expert Advisors. From RichFreedom to FlipDemon, we offer proven robots for every trading style.</p>
+            <a href="#payment" class="cta-button">Get Started Today</a>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div class="stat-card">
+            <div class="stat-number">98%</div>
+            <div class="stat-label">Success Rate</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">24/5</div>
+            <div class="stat-label">Market Hours</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">0.01s</div>
+            <div class="stat-label">Execution Speed</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">8K+</div>
+            <div class="stat-label">Daily Trades</div>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <h2 class="section-title">Advanced Trading Technology</h2>
+        <p class="section-subtitle">Powered by cutting-edge algorithms and intelligent automation</p>
+        
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🚀</div>
+                <h3>High-Speed Execution</h3>
+                <p>Sub-millisecond order execution with smart routing ensures you never miss an opportunity in fast-moving markets.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🌍</div>
+                <h3>Global Markets 24/5</h3>
+                <p>Trade major, minor, and exotic currency pairs across all forex sessions worldwide, maximizing your trading opportunities.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🛡️</div>
+                <h3>Risk Management</h3>
+                <p>Sophisticated risk controls with dynamic position sizing and multi-layer stop losses to protect your capital.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Advanced Analysis</h3>
+                <p>Technical, fundamental, and sentiment analysis combined with economic calendar integration for informed decisions.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📱</div>
+                <h3>Mobile Trading</h3>
+                <p>Works on all types of mobile phones, enabling you to trade anywhere without needing a PC or complex setup.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Offline Capability</h3>
+                <p>Continue trading even without internet connection. Our robot maintains operations seamlessly in offline mode.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="pricing">
+        <h2 class="section-title">Our Trading Robots</h2>
+        <p class="section-subtitle">Choose from our collection of powerful Expert Advisors</p>
+        
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <h3 class="plan-name">RichFreedom 4.0</h3>
+                <div class="plan-price">$800</div>
+                <p class="plan-term">One-Time Payment</p>
+                <ul class="plan-features">
+                    <li>24/7 Automated Trading</li>
+                    <li>Advanced Risk Management</li>
+                    <li>Multi-Currency Support</li>
+                    <li>Real-Time Market Analysis</li>
+                    <li>Mobile Compatible</li>
+                    <li>Lifetime Updates</li>
+                    <li>Full Support Included</li>
+                </ul>
+                <a href="#contact" class="plan-button">Get RichFreedom 4.0</a>
+            </div>
+
+            <div class="pricing-card featured">
+                <div class="plan-badge">Most Popular</div>
+                <h3 class="plan-name">RichFreedom Max Pro</h3>
+                <div class="plan-price">$1,200</div>
+                <p class="plan-term">One-Time Payment</p>
+                <ul class="plan-features">
+                    <li>Everything in RichFreedom 4.0</li>
+                    <li>Maximum Performance Mode</li>
+                    <li>Advanced AI Strategies</li>
+                    <li>Enhanced Profit Targets</li>
+                    <li>Priority Support 24/7</li>
+                    <li>Custom Settings Available</li>
+                    <li>VIP Trading Signals</li>
+                    <li>Dedicated Account Manager</li>
+                </ul>
+                <a href="#contact" class="plan-button">Get Max Pro</a>
+            </div>
+
+            <div class="pricing-card">
+                <h3 class="plan-name">Tinga Tinga New EA</h3>
+                <div class="plan-price">$990</div>
+                <p class="plan-term">One-Time Payment</p>
+                <ul class="plan-features">
+                    <li>Latest EA Technology</li>
+                    <li>High-Frequency Trading</li>
+                    <li>Smart Entry System</li>
+                    <li>Automated Risk Control</li>
+                    <li>Works on All Brokers</li>
+                    <li>24/7 Trading Capability</li>
+                    <li>Free Setup Assistance</li>
+                </ul>
+                <a href="#contact" class="plan-button">Get Tinga Tinga</a>
+            </div>
+
+            <div class="pricing-card">
+                <h3 class="plan-name">GPRS VIX 75 EA</h3>
+                <div class="plan-price">$750</div>
+                <p class="plan-term">One-Time Payment</p>
+                <ul class="plan-features">
+                    <li>Specialized for VIX 75 Index</li>
+                    <li>High Volatility Trading</li>
+                    <li>Precision Entry Points</li>
+                    <li>Optimized for Volatility</li>
+                    <li>Advanced Money Management</li>
+                    <li>Real-Time Adjustments</li>
+                    <li>Expert Support Team</li>
+                </ul>
+                <a href="#contact" class="plan-button">Get GPRS VIX 75</a>
+            </div>
+
+            <div class="pricing-card">
+                <h3 class="plan-name">FlipDemon vX</h3>
+                <div class="plan-price">$1,200</div>
+                <p class="plan-term">Full Plan - One-Time Payment</p>
+                <ul class="plan-features">
+                    <li>Rapid Account Growth</li>
+                    <li>AI-Powered Trading</li>
+                    <li>High-Frequency Execution</li>
+                    <li>Smart Risk Management</li>
+                    <li>Works Offline</li>
+                    <li>No PC Required</li>
+                    <li>Mobile Trading Ready</li>
+                </ul>
+                <a href="#contact" class="plan-button">Get FlipDemon vX</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="payment" class="pricing" style="padding-top: 50px;">
+        <h2 class="section-title">Payment Methods</h2>
+        <p class="section-subtitle">Choose your preferred payment method below</p>
+        
+        <div style="max-width: 900px; margin: 0 auto; padding: 0 20px;">
+            <div style="background: linear-gradient(145deg, rgba(255, 0, 0, 0.1), rgba(255, 0, 0, 0.05)); border: 2px solid rgba(255, 0, 0, 0.3); border-radius: 20px; padding: 40px; margin-bottom: 50px;">
+                <h3 style="color: #ff3333; font-size: 24px; margin-bottom: 20px; text-align: center; font-weight: 900;">⚠️ IMPORTANT PAYMENT INSTRUCTIONS</h3>
+                <p style="color: var(--text-dim); line-height: 1.8; text-align: center; font-size: 16px;">
+                    Please send the <strong style="color: var(--primary);">exact amount</strong> to the address below. After completing your payment, kindly submit proof of payment through:
+                </p>
+                <div style="display: flex; gap: 20px; justify-content: center; margin-top: 25px; flex-wrap: wrap;">
+                    <div style="color: #25D366; font-weight: 700;">📱 WhatsApp (available on website)</div>
+                    <div style="color: var(--primary); font-weight: 700;">✉️ Email (available on website)</div>
+                </div>
+                <p style="color: var(--text); text-align: center; margin-top: 20px; font-weight: 600;">
+                    Our team will guide you through the next steps immediately after confirmation.
+                </p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+                <!-- Bitcoin Payment -->
+                <div style="background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02)); border: 2px solid rgba(247, 147, 26, 0.5); border-radius: 20px; padding: 40px; text-align: center; transition: all 0.3s;">
+                    <div style="font-size: 48px; margin-bottom: 20px;">₿</div>
+                    <h3 style="color: #F7931A; font-size: 24px; margin-bottom: 15px; font-family: 'Orbitron', sans-serif;">Bitcoin (BTC)</h3>
+                    <p style="color: var(--text-dim); font-size: 14px; margin-bottom: 20px;">Bitcoin Network</p>
+                    <div style="background: rgba(0, 0, 0, 0.3); padding: 20px; border-radius: 10px; word-break: break-all; margin-bottom: 20px;">
+                        <p style="color: var(--text); font-size: 14px; font-family: monospace; line-height: 1.6;">1A5KKcitE7vdxu945Dcg8MR1YPGzhF6HUL</p>
+                    </div>
+                    <button onclick="copyToClipboard('1A5KKcitE7vdxu945Dcg8MR1YPGzhF6HUL')" style="background: #F7931A; color: #000; border: none; padding: 12px 25px; border-radius: 25px; font-weight: 700; cursor: pointer; transition: all 0.3s;">
+                        Copy Address
+                    </button>
+                </div>
+
+                <!-- USDT TRC20 Payment -->
+                <div style="background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02)); border: 2px solid rgba(38, 161, 123, 0.5); border-radius: 20px; padding: 40px; text-align: center; transition: all 0.3s;">
+                    <div style="font-size: 48px; margin-bottom: 20px;">💎</div>
+                    <h3 style="color: #26A17B; font-size: 24px; margin-bottom: 15px; font-family: 'Orbitron', sans-serif;">USDT TRC20</h3>
+                    <p style="color: var(--text-dim); font-size: 14px; margin-bottom: 20px;">Tron Network</p>
+                    <div style="background: rgba(0, 0, 0, 0.3); padding: 20px; border-radius: 10px; word-break: break-all; margin-bottom: 20px;">
+                        <p style="color: var(--text); font-size: 14px; font-family: monospace; line-height: 1.6;">TBEFAvqnDJKSCSBTBWeR4QaxANenTFnZmT</p>
+                    </div>
+                    <button onclick="copyToClipboard('TBEFAvqnDJKSCSBTBWeR4QaxANenTFnZmT')" style="background: #26A17B; color: #fff; border: none; padding: 12px 25px; border-radius: 25px; font-weight: 700; cursor: pointer; transition: all 0.3s;">
+                        Copy Address
+                    </button>
+                </div>
+
+                <!-- Tigo Pesa Payment -->
+                <div style="background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02)); border: 2px solid rgba(0, 102, 204, 0.5); border-radius: 20px; padding: 40px; text-align: center; transition: all 0.3s;">
+                    <div style="font-size: 48px; margin-bottom: 20px;">📲</div>
+                    <h3 style="color: #0066CC; font-size: 24px; margin-bottom: 15px; font-family: 'Orbitron', sans-serif;">Tigo Pesa (YAS)</h3>
+                    <p style="color: var(--text-dim); font-size: 14px; margin-bottom: 20px;">Mobile Money - Tanzania</p>
+                    <div style="background: rgba(0, 0, 0, 0.3); padding: 20px; border-radius: 10px; word-break: break-all; margin-bottom: 20px;">
+                        <p style="color: var(--text); font-size: 20px; font-weight: 700; letter-spacing: 2px;">+255 655 101 442</p>
+                    </div>
+                    <button onclick="copyToClipboard('+255655101442')" style="background: #0066CC; color: #fff; border: none; padding: 12px 25px; border-radius: 25px; font-weight: 700; cursor: pointer; transition: all 0.3s;">
+                        Copy Number
+                    </button>
+                </div>
+            </div>
+
+            <div style="margin-top: 50px; text-align: center; padding: 30px; background: rgba(0, 255, 136, 0.05); border: 1px solid rgba(0, 255, 136, 0.2); border-radius: 15px;">
+                <h3 style="color: var(--primary); margin-bottom: 20px; font-size: 22px;">After Payment</h3>
+                <p style="color: var(--text-dim); line-height: 1.8; font-size: 16px;">
+                    Send your payment proof (screenshot) along with your chosen robot name to:
+                </p>
+                <div style="display: flex; gap: 30px; justify-content: center; margin-top: 25px; flex-wrap: wrap;">
+                    <a href="https://wa.me/255655101442" target="_blank" style="color: #25D366; text-decoration: none; font-weight: 700; font-size: 18px;">
+                        📱 WhatsApp: +255 655 101 442
+                    </a>
+                    <a href="mailto:richmindedforexskills@gmail.com" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: 700; font-size: 18px;">
+                        ✉️ richmindedforexskills@gmail.com
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="testimonials">
+        <h2 class="section-title">What Our Clients Say</h2>
+        <p class="section-subtitle">Join thousands of satisfied traders worldwide</p>
+        
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <p class="testimonial-text">"Incredible accuracy and fast execution. This robot has transformed my trading completely."</p>
+                <p class="testimonial-author">- John M.</p>
+            </div>
+
+            <div class="testimonial-card">
+                <p class="testimonial-text">"I have made the right choice. The results speak for themselves and the support is excellent."</p>
+                <p class="testimonial-author">- Loveness</p>
+            </div>
+
+            <div class="testimonial-card">
+                <p class="testimonial-text">"Reliable and excellent support. The team is always there when you need help."</p>
+                <p class="testimonial-author">- David K.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2 class="section-title">Get In Touch</h2>
+        <p class="section-subtitle">Ready to start your automated trading journey?</p>
+        
+        <div class="contact-container">
+            <div style="margin-bottom: 40px; text-align: center;">
+                <h3 style="color: var(--primary); margin-bottom: 25px; font-size: 24px;">Connect With Us</h3>
+                
+                <div style="display: flex; flex-direction: column; gap: 20px; max-width: 600px; margin: 0 auto;">
+                    <a href="https://wa.me/255655101442" target="_blank" style="display: flex; align-items: center; justify-content: center; gap: 15px; padding: 20px; background: rgba(37, 211, 102, 0.1); border: 2px solid #25D366; border-radius: 15px; color: #25D366; text-decoration: none; font-weight: 600; font-size: 18px; transition: all 0.3s;">
+                        <span style="font-size: 28px;">📱</span>
+                        <span>WhatsApp: +255 655 101 442</span>
+                    </a>
+                    
+                    <a href="https://t.me/richmindedskillsEAreview" target="_blank" style="display: flex; align-items: center; justify-content: center; gap: 15px; padding: 20px; background: rgba(0, 136, 204, 0.1); border: 2px solid #0088cc; border-radius: 15px; color: #0088cc; text-decoration: none; font-weight: 600; font-size: 18px; transition: all 0.3s;">
+                        <span style="font-size: 28px;">✈️</span>
+                        <span>Telegram Channel</span>
+                    </a>
+                    
+                    <a href="https://t.me/Richmindedskills" target="_blank" style="display: flex; align-items: center; justify-content: center; gap: 15px; padding: 20px; background: rgba(0, 136, 204, 0.1); border: 2px solid #0088cc; border-radius: 15px; color: #0088cc; text-decoration: none; font-weight: 600; font-size: 18px; transition: all 0.3s;">
+                        <span style="font-size: 28px;">💬</span>
+                        <span>@Richmindedskills</span>
+                    </a>
+                    
+                    <a href="https://www.youtube.com/@RICHMINDEDSKILLS" target="_blank" style="display: flex; align-items: center; justify-content: center; gap: 15px; padding: 20px; background: rgba(255, 0, 0, 0.1); border: 2px solid #FF0000; border-radius: 15px; color: #FF0000; text-decoration: none; font-weight: 600; font-size: 18px; transition: all 0.3s;">
+                        <span style="font-size: 28px;">▶️</span>
+                        <span>YouTube Channel</span>
+                    </a>
+                    
+                    <a href="https://one.exnesstrack.net/a/q44sylym63" target="_blank" style="display: flex; align-items: center; justify-content: center; gap: 15px; padding: 20px; background: rgba(0, 255, 136, 0.1); border: 2px solid var(--primary); border-radius: 15px; color: var(--primary); text-decoration: none; font-weight: 600; font-size: 18px; transition: all 0.3s;">
+                        <span style="font-size: 28px;">🏦</span>
+                        <span>Open Exness Account</span>
+                    </a>
+                </div>
+            </div>
+
+            <div style="border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 40px;">
+                <h3 style="color: var(--text); margin-bottom: 25px; text-align: center; font-size: 20px;">Or Send Us a Message</h3>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="plan">Interested Robot</label>
+                        <input type="text" id="plan" name="plan" placeholder="RichFreedom 4.0 / Max Pro / Tinga Tinga / GPRS VIX / FlipDemon">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-button">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#features">Features</a>
+                <a href="#pricing">Our Robots</a>
+                <a href="#testimonials">Testimonials</a>
+                <a href="#contact">Contact</a>
+            </div>
+            
+            <p class="copyright">© 2024 Richminded Skills. All rights reserved.</p>
+            
+            <div class="risk-disclosure">
+                <strong>Risk Disclosure:</strong> Trading forex and CFDs on margin carries a high level of risk and may not be suitable for all investors. The high degree of leverage can work against you as well as for you. Before deciding to trade forex and CFDs, you should carefully consider your investment objectives, level of experience, and risk appetite. The possibility exists that you could sustain a loss of some or all of your initial investment, and therefore you should not invest money that you cannot afford to lose. You should be aware of all the risks associated with forex and CFD trading and seek advice from an independent financial advisor if you have any doubts.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission handler
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                plan: document.getElementById('plan').value,
+                message: document.getElementById('message').value
+            };
+            
+            // Create mailto link
+            const subject = encodeURIComponent('Interest in ' + formData.plan);
+            const body = encodeURIComponent(
+                'Name: ' + formData.name + '\n' +
+                'Email: ' + formData.email + '\n' +
+                'Interested Robot: ' + formData.plan + '\n\n' +
+                'Message:\n' + formData.message
+            );
+            
+            window.location.href = 'mailto:richmindedforexskills@gmail.com?subject=' + subject + '&body=' + body;
+            
+            // Reset form
+            this.reset();
+        });
+
+        // Copy to clipboard function
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(function() {
+                alert('✅ Copied to clipboard: ' + text);
+            }).catch(function(err) {
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = text;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                alert('✅ Copied to clipboard: ' + text);
+            });
+        }
+
+        // Add scroll animation for cards
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards
+        document.querySelectorAll('.feature-card, .pricing-card, .testimonial-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'all 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
